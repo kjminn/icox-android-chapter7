@@ -14,6 +14,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/sbubble"
         android:gravity="center"
         android:text="포르투갈의\n수도는?"
         android:textSize="32sp"
