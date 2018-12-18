@@ -13,16 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".FileExActivity"></activity>
-        <activity android:name=".PrefExActivity">
-
-        </activity>
+        <activity android:name=".FileExActivity" />
+        <activity android:name=".PrefExActivity"></activity>
         <activity android:name=".PrefFragmentActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <!-- 암시적 인텐트로 실행되는 브로드캐스트 리시버 등록 -->
@@ -33,6 +27,14 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".ScreenOffExActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
