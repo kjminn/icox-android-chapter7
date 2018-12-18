@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +21,7 @@
         </activity>
         <activity android:name=".FileExActivity" />
         <activity android:name=".PrefExActivity" />
-        <activity android:name=".PrefFragmentActivity"></activity>
+        <activity android:name=".PrefFragmentActivity" />
 
         <!-- 암시적 인텐트로 실행되는 브로드캐스트 리시버 등록 -->
         <receiver
@@ -32,14 +32,14 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ScreenOffExActivity">
-
-        </activity>
+        <activity android:name=".ScreenOffExActivity"></activity>
 
         <service
             android:name=".LockScreenService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".QuizLockerActivity"></activity>
     </application>
 
 </manifest>
