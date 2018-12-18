@@ -16,6 +16,10 @@ import java.util.*
 
 class QuizLockerActivity : AppCompatActivity() {
     var quiz: JSONObject? = null
+    // 정답횟수 저장 SharedPreference
+    val wrongAnswerPref by lazy { getSharedPreferences("wrongAnswer", Context.MODE_PRIVATE) }
+    // 오답횟수 저장 SharedPreference
+    val correctAnswerPref by lazy { getSharedPreferences("correctAnswer", Context.MODE_PRIVATE) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +48,10 @@ class QuizLockerActivity : AppCompatActivity() {
         quizLabel.text = quiz?.getString("question")
         choice1.text = quiz?.getString("choice1")
         choice2.text = quiz?.getString("choice2")
-
+        // 정답횟수 오답횟수를 보여준다.
+        val id = quiz?.getInt("id").toString() ?: ""
+        correctCountLabel.text = "정답횟수:${correctAnswerPref.getInt(id, 0)}"
+        wrongCountLabel.text = "오답횟수: ${wrongAnswerPref.getInt(id, 0)}"
         // SeekBar 의 값이 변경될때 불리는 리스너
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             // progress 값이 변경될때 불리는 함수
@@ -94,8 +101,23 @@ class QuizLockerActivity : AppCompatActivity() {
         quiz?.let {
             when {
                 // choice 의 텍스트가 정답 텍스트와 같으면 Activity 종료
-                choice == it.getString("answer") -> finish()
+                choice == it.getString("answer") -> {
+                    // 정답인 경우 정답횟수 증가
+                    val id = it.getInt("id").toString()
+                    var count = correctAnswerPref.getInt(id, 0)
+                    count++
+                    correctAnswerPref.edit().putInt(id, count).apply()
+                    correctCountLabel.text = "정답횟수: ${count}"
+                    // Activity 종료
+                    finish()
+                }
                 else -> {
+                    // 오답 횟수 증가
+                    val id = it.getInt("id").toString()
+                    var count = wrongAnswerPref.getInt(id, 0)
+                    count++
+                    wrongAnswerPref.edit().putInt(id, count).apply()
+                    wrongCountLabel.text = "오답횟수: ${count}"
                     // 정답이 아닌경우 UI 초기화
                     leftImageView.setImageResource(R.drawable.padlock)
                     rightImageView.setImageResource(R.drawable.padlock)
