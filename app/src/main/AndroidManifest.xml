@@ -14,10 +14,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity android:name=".FileExActivity" />
-        <activity android:name=".PrefExActivity"></activity>
-        <activity android:name=".PrefFragmentActivity">
-
-        </activity>
+        <activity android:name=".PrefExActivity" />
+        <activity android:name=".PrefFragmentActivity"></activity>
 
         <!-- 암시적 인텐트로 실행되는 브로드캐스트 리시버 등록 -->
         <receiver
@@ -35,6 +33,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".LockScreenService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
