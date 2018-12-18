@@ -3,7 +3,7 @@
     package="com.akj.quizlocker">
 
     <!-- 외부저장소에 읽기 쓰기 권한 요청, 앱 전용 데이터로 저장하는 경우 SDK 18 이후부터는 권한 요청이 필요 없음. -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
