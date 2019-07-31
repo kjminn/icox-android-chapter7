@@ -10,7 +10,7 @@ import android.util.Log
 // BroadcastReceiver 를 상속받는다
 class BootCompleteReceiver : BroadcastReceiver() {
     // 브로드캐스트 메세지 수신시 불리는 컬백 함수
-    override fun onReceive(context: Context?, intent: Intent?) {
+    override fun onReceive(context: Context?, intent: Intent?) { 
         when {
             // 부팅이 완료될때의 메세지인지 확인
             intent?.action == Intent.ACTION_BOOT_COMPLETED -> {
