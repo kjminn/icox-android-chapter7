@@ -21,7 +21,7 @@ class BootCompleteReceiver : BroadcastReceiver() {
                     val useLockScreen = pref.getBoolean("useLockScreen", false)
                     if (useLockScreen) {
                         // LockScreenService 시작
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { //대문자 O
                             it.startForegroundService(Intent(context, LockScreenService::class.java))
                         } else {
                             it.startService(Intent(context, LockScreenService::class.java))

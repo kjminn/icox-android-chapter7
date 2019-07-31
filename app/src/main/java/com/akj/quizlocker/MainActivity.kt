@@ -7,6 +7,7 @@ import android.preference.MultiSelectListPreference
 import android.preference.PreferenceFragment
 import android.preference.SwitchPreference
 import android.support.v7.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     val fragment = MyPreferenceFragment()
@@ -15,6 +16,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         // preferenceContent FrameLayout 영역을 PreferenceFragment 로 교체
         fragmentManager.beginTransaction().replace(R.id.preferenceContent, fragment).commit()
+        initButton.setOnClickListener {
+            initAnswerCount()
+        }
+    }
+
+    private fun initAnswerCount() {
+//        val correctAnswerPref = getSharedPreferences("CorrectAnswer")
     }
 
     class MyPreferenceFragment : PreferenceFragment() {
